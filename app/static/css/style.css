@@ -579,3 +579,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   background-color: rgba(216, 216, 216, 0.85);
 }
 
+.logos {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
