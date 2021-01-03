@@ -576,11 +576,20 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .bg-faded {
-  background-color: rgba(216, 216, 216, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .logos {
   width: 100px;
   height: 50px;
   border-radius: 15px;
+}
+
+.full-body {
+  background-color: rgb(170, 252, 231);
+  border-radius: 50px;
+}
+
+.product-item-img {
+  width: 100%;
 }
