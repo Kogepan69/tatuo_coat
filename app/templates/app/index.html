@@ -43,8 +43,8 @@
               </span>
               <h4 class="my-3">クレジットカードに対応</h4>
               <p class="text-muted">お支払いは施工後でOK！</p>
-              <p class="text-muted">現金払いかクレジットカードの</p>
-              <p class="text-muted">２種類から決済を選べます。</p>
+              <p class="text-muted">現金払いかクレジットカードまたはPayPay</p>
+              <p class="text-muted">の３種類から決済を選べます。</p>
           </div>
       </div>
   </div>
@@ -66,8 +66,10 @@
                       <img class="img-fluid" src="{% static 'img/wash.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'wash' %}">
                       <div class="portfolio-caption-heading">高級洗車</div>
                       <div class="portfolio-caption-subheading text-muted">car wash</div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -80,8 +82,10 @@
                       <img class="img-fluid" src="{% static 'img/porsche.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'coating' %}">
                       <div class="portfolio-caption-heading">Keeperコーティング</div>
                       <div class="portfolio-caption-subheading text-muted">coating</div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -94,8 +98,10 @@
                       <img class="img-fluid" src="{% static 'img/polishing.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'polishing' %}">
                       <div class="portfolio-caption-heading">研磨</div>
                       <div class="portfolio-caption-subheading text-muted">polishing</div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -108,8 +114,10 @@
                       <img class="img-fluid" src="{% static 'img/kuruma.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'diagnosis' %}">
                       <div class="portfolio-caption-heading">事前診断</div>
                       <div class="portfolio-caption-subheading text-muted">diagnosis</div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -122,8 +130,10 @@
                       <img class="img-fluid" src="{% static 'img/AI.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'program' %}">
                       <div class="portfolio-caption-heading">AIのたつおくん</div>
                       <div class="portfolio-caption-subheading text-muted">AI program</div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -133,11 +143,13 @@
                       <div class="portfolio-hover">
                           <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                       </div>
-                      <img class="img-fluid" src="{% static 'img/logo_midle.jpg' %}" alt="" />
+                      <img class="img-fluid" src="{% static 'img/black_logo.jpg' %}" alt="" />
                   </a>
                   <div class="portfolio-caption">
+                    <a href="{% url 'campany' %}">
                       <div class="portfolio-caption-heading">会社概要</div>
                       <div class="portfolio-caption-subheading text-muted">Co.</div>
+                    </a>
                   </div>
               </div>
           </div>
