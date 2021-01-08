@@ -1,6 +1,6 @@
 from django.views.generic import View
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Profile, Work
 
 
 class IndexView(View):
@@ -21,7 +21,14 @@ class ContactView(View):
 
 class BlogView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'app/blog.html')
+        profile_data = Profile.objects.all()
+        if profile_data.exists():
+            profile_data = profile_data.order_by("-id")[0]
+        work_data = Work.objects.order_by("-id")
+        return render(request, 'app/blog.html', {
+            'profile_data' : profile_data,
+            'work_data': work_data
+        })
 
 class ReservationView(View):
     def get(self, request, *args, **kwargs):
@@ -50,3 +57,10 @@ class ProgramView(View):
 class CampanyView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/campany.html')
+
+class DetailView(View):
+    def get(self, request, *args, **kwargs):
+        work_data = Work.objects.get(id=self.kwargs['pk'])
+        return render(request, 'app/detail.html', {
+            'work_data': work_data
+        })

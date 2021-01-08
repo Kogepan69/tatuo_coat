@@ -974,3 +974,41 @@ a:hover, a:focus, a:active {
   background-color: #ffcc00;
   cursor: pointer;
 }
+
+.work-thumbnail {
+  overflow: hidden;
+  position: relative;
+}
+
+.work-img {
+  object-fit: cover;
+  height: 240px;
+}
+
+.work-title {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  opacity: 0;
+  background-color: rgb(238, 108, 77, 0.8);
+  transform: translateY(70px);
+  transition: all 0.2s ease-in-out;
+}
+
+.work-thumbnail:hover .work-title {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.link-color {
+  color: #EE6C4D;
+}
+
+.link-color:hover {
+  color: #c56c55;
+  text-decoration: none;
+}
