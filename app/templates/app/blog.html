@@ -3,24 +3,24 @@
 {% load static %}
 
 {% block top-image %}
-<img src="{% static 'img/pc.jpg' %}">
+<img src="{% static 'img/blog.jpg' %}">
 {% endblock %}
 
 {% block content %}
 <br>
 <div class="row mb-5">
-  {% for work in work_data %}
+  {% for blog in blog_data %}
       <div class="col-6 col-md-3 mb-3">
           <div class="card work-thumbnail">
-              {% if work.thumbnail %}
-                  <img class="work-img" src="{{ work.thumbnail.url }}" alt="">
+              {% if blog.thumbnail %}
+                  <img class="work-img" src="{{ blog.thumbnail.url }}" alt="">
               {% else %}
-                  <img class="work-img" src="{{ work.image.url }}" alt="">
+                  <img class="work-img" src="{{ blog.image.url }}" alt="">
               {% endif %}
               <div class="work-title text-center">
-                  <p class="mb-0">{{ work.title }}</p>
+                  <p class="mb-0">{{ blog.title }}</p>
               </div>
-              <a class="stretched-link work" href="{% url 'detail' work.id %}"></a>
+              <a class="stretched-link work" href="{% url 'detail' blog.id %}"></a>
           </div>
       </div>
   {% endfor %}

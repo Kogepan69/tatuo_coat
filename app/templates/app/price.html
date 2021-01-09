@@ -1,5 +1,5 @@
 {% extends "app/base.html" %}
-
+{% load widget_tweaks %}
 {% load static %}
 
 {% block top-image %}
@@ -10,115 +10,124 @@
 
 <section class="page-section" id="about">
   <div class="container">
-      <div class="text-center">
-          <h2 class="section-heading text-uppercase">たつおくん</h2>
-          <h3 class="section-subheading text-muted">(AI version 1.0.1)</h3>
-          <p class="section-subheading text-muted">弊社は自動料金算出システムを採用しています。</p>
-          <p class="section-subheading text-muted">下記の質問項目に答えるだけであなたにぴったりの料金プランをご提案します。</p>
-          <p class="section-subheading text-muted">*車の型式などの問題で正しい料金をご提示できない場合があります。</p>
-          <p class="section-subheading text-muted">料金確定は実際に現車を確認してからになりますので参考程度にお考えください。</p><br><br>
-      </div>
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">たつおくん</h2>
+      <h3 class="section-subheading text-muted">(AI version 1.0.1)</h3>
+      <p class="section-subheading text-muted">弊社は自動料金算出システムを採用しています。</p>
+      <p class="section-subheading text-muted">下記の質問項目に答えるだけであなたにぴったりの料金プランをご提案します。</p>
+      <p class="section-subheading text-muted">*車の型式などの問題で正しい料金をご提示できない場合があります。</p>
+      <p class="section-subheading text-muted">料金確定は実際に現車を確認してからになりますので参考程度にお考えください。</p><br><br>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
       <ul class="timeline">
-          <li>
-              <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
-              <div class="timeline-panel">
-                  <div class="timeline-heading">
-                      <h4>初めまして、たつおです！
-                      </h4>
-                      <h4 class="subheading">まずはお客様のお車の車種を入力してください。</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">入力欄<br>
-                    <input type="text" name="example2" size="30">
-                    </p>
-                    <p>*例：インプレッサ、クラウン、ハイエース、ランドクルーザー、タント 、ect...</p>
-                    <p>型式は入力せず正式名称（カタカナ）でのご記入をお願いいたします。</p>
-                  </div>
+        <li>
+          <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="" /></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>初めまして、たつおです！
+              </h4>
+              <h4 class="subheading">まずはお客様のお車の車種を入力してください。</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">入力欄<br>
+              <div class="formpost">
+                {% render_field form.name class="form-control" placeholder="車種を入力" %}
               </div>
-          </li>
-          <li class="timeline-inverted">
-              <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="" /></div>
-              <div class="timeline-panel">
-                  <div class="timeline-heading">
-                      <h4>お車を触った時にザラザラとしますか？</h4>
-                      <h4 class="subheading">またお車の保管場所を教えてください。</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">
-                      <input type="checkbox" name="riyu" value="1">ザラザラする箇所がある<br>
-                      <input type="checkbox" name="riyu" value="2">とてもツルツル
-                    </p>
-                    <br>
-                    <p class="text-muted">
-                      <input type="checkbox" name="riyu" value="1">屋内　
-                      <input type="checkbox" name="riyu" value="2">屋外<br>
-                      <input type="checkbox" name="riyu" value="3">屋内だが通勤にも使う
-                    </p>
-                  </div>
-              </div>
-          </li>
-          <li>
-              <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
-              <div class="timeline-panel">
-                  <div class="timeline-heading">
-                      <h4>窓ガラスの撥水性能に満足していますか？</h4>
-                      <h4 class="subheading">夜運転していて見づらいなと感じたことはありませんか？</h4>
-                  </div>
-                  <div class="timeline-body"><p class="text-muted">
-                    <input type="checkbox" name="riyu" value="1">満足しているよ、うん<br>
-                    <input type="checkbox" name="riyu" value="2">水弾かないよ、まじで
-                  </p><br>
-                  <p class="text-muted">
-                    <input type="checkbox" name="riyu" value="1">視界良好！<br>
-                    <input type="checkbox" name="riyu" value="2">見づらい。
-                  </p>
-                  </div>
-              </div>
-          </li>
-          <li class="timeline-inverted">
-              <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
-              <div class="timeline-panel">
-                  <div class="timeline-heading">
-                      <h4>1ヶ月に何回洗車しますか？</h4>
-                  </div>
-                  <div class="timeline-body"><p class="text-muted">
-                    <input type="checkbox" name="riyu" value="1">1回するかしないか<br>
-                    <input type="checkbox" name="riyu" value="2">２〜３回程度<br>
-                    <input type="checkbox" name="riyu" value="1">１週間に1回<br>
-                    <input type="checkbox" name="riyu" value="2">3日に1回<br>
-                    <input type="checkbox" name="riyu" value="1">毎日してるよ！<br>
-                  </p></div>
-              </div>
-          </li>
-          <li class="timeline-inverted">
-              <div class="timeline-image">
-                <h4>
-                  Recommended
-                  <br />
-                  plan 
-                  <br />
-                  for you
-                </h4>
-                <img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                      <h4>お客様に最適なプランはこちらです。</h4>
-                  </div>
-                  <div class="timeline-body"><p class="text-muted">
-                    <input type="checkbox" name="riyu" value="1" checked="checked">高級洗車<br>
-                    <input type="checkbox" name="riyu" value="2" checked="checked">鉄粉とり<br>
-                    <input type="checkbox" name="riyu" value="1" checked="checked">窓ガラス油膜とり<br>
-                    <input type="checkbox" name="riyu" value="2" checked="checked">Keeperコーティング<br>
-                    </p><br></div>
-                    <h3>料金は25,000円です。</h3>
-                    <button class="Button-style">
-                      <a href="{% url 'reservation' %}">
-                        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i> 空き状況を確認する</button>
-                      </a>
-                  </div>
-                </div>
-          </li>
+              </p>
+              <p>*例：インプレッサ、クラウン、ハイエース、ランドクルーザー、タント 、ect...</p>
+              <p>型式は入力せず正式名称（カタカナ）でのご記入をお願いいたします。</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="" /></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>お車を触った時にザラザラとしますか？</h4>
+              <h4 class="subheading">またお車の保管場所を教えてください。</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1">ザラザラする箇所がある<br>
+                <input type="checkbox" name="riyu" value="2">とてもツルツル
+              </p>
+              <br>
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1">屋内　
+                <input type="checkbox" name="riyu" value="2">屋外<br>
+                <input type="checkbox" name="riyu" value="3">屋内だが通勤にも使う
+              </p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>窓ガラスの撥水性能に満足していますか？</h4>
+              <h4 class="subheading">夜運転していて見づらいなと感じたことはありませんか？</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1">満足しているよ、うん<br>
+                <input type="checkbox" name="riyu" value="2">水弾かないよ、まじで
+              </p><br>
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1">視界良好！<br>
+                <input type="checkbox" name="riyu" value="2">見づらい。
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" /></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>1ヶ月に何回洗車しますか？</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1">1回するかしないか<br>
+                <input type="checkbox" name="riyu" value="2">２〜３回程度<br>
+                <input type="checkbox" name="riyu" value="1">１週間に1回<br>
+                <input type="checkbox" name="riyu" value="2">3日に1回<br>
+                <input type="checkbox" name="riyu" value="1">毎日してるよ！<br>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <h4>
+              Recommended
+              <br />
+              plan
+              <br />
+              for you
+            </h4>
+            <img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="" />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>お客様に最適なプランはこちらです。</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                <input type="checkbox" name="riyu" value="1" checked="checked">高級洗車<br>
+                <input type="checkbox" name="riyu" value="2" checked="checked">鉄粉とり<br>
+                <input type="checkbox" name="riyu" value="1" checked="checked">窓ガラス油膜とり<br>
+                <input type="checkbox" name="riyu" value="2" checked="checked">Keeperコーティング<br>
+              </p><br>
+            </div>
+            <h3>料金は{{price}}円です。</h3>
+            <button class="Button-style" type="submit">
+              <i class="fa fa-fw fa-envelope" aria-hidden="true"></i> 料金見積もりをする
+            </button>
+          </div>
+        </li>
       </ul>
+    </form>
   </div>
 </section>
 

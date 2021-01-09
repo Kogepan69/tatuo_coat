@@ -1,7 +1,7 @@
 from django.views.generic import View
 from django.shortcuts import render
-from .models import Post, Profile, Work
-
+from .models import Blog,Car
+from .forms import CarForm
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -13,7 +13,29 @@ class ServiceView(View):
 
 class PriceView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'app/price.html')
+        form = CarForm(request.POST or None)
+        return render(request, 'app/price.html', {
+        'form': form,
+        'price':0
+    })
+    def post(self, request, *args, **kwargs):
+        form = CarForm(request.POST or None)
+
+        if form.is_valid():
+            car_name= form.cleaned_data['name']
+            car_data=Car.objects.get(name=car_name)
+            if car_data.size =="S":
+              price=10000
+            else:
+              price=0
+            print(car_data.size)
+
+        return render(request, 'app/price.html', {
+            'form': form,
+            "price":price
+        })
+
+
 
 class ContactView(View):
     def get(self, request, *args, **kwargs):
@@ -21,13 +43,9 @@ class ContactView(View):
 
 class BlogView(View):
     def get(self, request, *args, **kwargs):
-        profile_data = Profile.objects.all()
-        if profile_data.exists():
-            profile_data = profile_data.order_by("-id")[0]
-        work_data = Work.objects.order_by("-id")
+        blog_data = Blog.objects.order_by("-id")
         return render(request, 'app/blog.html', {
-            'profile_data' : profile_data,
-            'work_data': work_data
+            'blog_data': blog_data
         })
 
 class ReservationView(View):
@@ -60,7 +78,8 @@ class CampanyView(View):
 
 class DetailView(View):
     def get(self, request, *args, **kwargs):
-        work_data = Work.objects.get(id=self.kwargs['pk'])
+        blog_data = Blog.objects.get(id=self.kwargs['pk'])
         return render(request, 'app/detail.html', {
-            'work_data': work_data
+            'blog_data': blog_data
         })
+

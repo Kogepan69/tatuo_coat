@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<h3 class="mb-4">{{ work_data.title }}</h3>
+<h3 class="mb-4">{{ blog_data.title }}</h3>
 <div class="card top mb-4">
-    <img src="{{ work_data.image.url }}" alt="">
+    <img src="{{ blog_data.image.url }}" alt="">
 </div>
 
 <div class="row">
@@ -14,14 +14,14 @@
         <p>
             <i class="fas fa-laptop-code mr-2"></i>
             <span class="font-weight-bolder">SKILLS : </span>
-            {{ work_data.skill }}
+            {{ blog_data.skill }}
         </p>
         <hr>
         <p>
             <i class="fab fa-github mr-2"></i>
             <span class="font-weight-bolder">GITHUB : </span>
-            {% if work_data.url %}
-                <a class="link-color" href="{{ work_data.url }}" target="_blank">Link</a>
+            {% if blog_data.url %}
+                <a class="link-color" href="{{ blog_data.url }}" target="_blank">Link</a>
             {% else %}
                 Private
             {% endif %}
@@ -30,13 +30,13 @@
         <p>
             <i class="far fa-calendar-alt mr-2"></i>
             <span class="font-weight-bolder">CREATED : </span>
-            {{ work_data.created }}
+            {{ blog_data.created }}
         </p>
         <hr>
     </div>
     <div class="col-sm-8 mb-5">
         <h4 class="mb-3">PROJECT DESCRIPTION</h4>
-        <p>{{ work_data.description|linebreaksbr }}</p>
+        <p>{{ blog_data.description|linebreaksbr }}</p>
     </div>
 </div>
 
