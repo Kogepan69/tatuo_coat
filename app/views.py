@@ -1,11 +1,17 @@
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.shortcuts import render
 from .models import Blog,Car
 from .forms import CarForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/index.html')
+
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "app/index.html"
+    login_url = '/accounts/login/'
 
 class ServiceView(View):
     def get(self, request, *args, **kwargs):
@@ -20,15 +26,37 @@ class PriceView(View):
     })
     def post(self, request, *args, **kwargs):
         form = CarForm(request.POST or None)
+        
 
         if form.is_valid():
             car_name= form.cleaned_data['name']
             car_data=Car.objects.get(name=car_name)
-            if car_data.size =="S":
-              price=10000
+            if car_data.size =="SS":
+              price=14500
+
+            elif car_data.size =="S":
+              price=16000
+            
+            elif car_data.size =="M":
+              price=17500
+
+            elif car_data.size =="L":
+              price=19000
+
+            elif car_data.size =="LL":
+              price=21500
+
+            elif car_data.size =="XL":
+              price=23000
+
             else:
-              price=0
+              price=5000
             print(car_data.size)
+            if request.POST.get('iron') == '1':
+              price+=1500
+            if request.POST.get('water') == '2':
+              price+=1500
+        
 
         return render(request, 'app/price.html', {
             'form': form,

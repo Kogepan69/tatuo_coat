@@ -49,14 +49,14 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1">ザラザラする箇所がある<br>
-                <input type="checkbox" name="riyu" value="2">とてもツルツル
+                <input type="radio" name="iron" value="1" checked="checked">ザラザラする箇所がある<br>
+                <input type="radio" name="iron" value="2">とてもツルツル
               </p>
               <br>
               <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1">屋内　
-                <input type="checkbox" name="riyu" value="2">屋外<br>
-                <input type="checkbox" name="riyu" value="3">屋内だが通勤にも使う
+                <input type="radio" name="iron_place" value="1" checked="checked">屋内　
+                <input type="radio" name="iron_place" value="2">屋外<br>
+                <input type="radio" name="iron_place" value="3">屋内だが通勤にも使う
               </p>
             </div>
           </div>
@@ -70,12 +70,8 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1">満足しているよ、うん<br>
-                <input type="checkbox" name="riyu" value="2">水弾かないよ、まじで
-              </p><br>
-              <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1">視界良好！<br>
-                <input type="checkbox" name="riyu" value="2">見づらい。
+                <input type="radio" name="water" value="1" checked="checked">満足している<br>
+                <input type="radio" name="water" value="2">水弾かない
               </p>
             </div>
           </div>
@@ -88,11 +84,11 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1">1回するかしないか<br>
-                <input type="checkbox" name="riyu" value="2">２〜３回程度<br>
-                <input type="checkbox" name="riyu" value="1">１週間に1回<br>
-                <input type="checkbox" name="riyu" value="2">3日に1回<br>
-                <input type="checkbox" name="riyu" value="1">毎日してるよ！<br>
+                <input type="radio" name="wash" value="1" checked="checked">1回するかしないか<br>
+                <input type="radio" name="wash" value="2">２〜３回程度<br>
+                <input type="radio" name="wash" value="3">１週間に1回<br>
+                <input type="radio" name="wash" value="4">3日に1回<br>
+                <input type="radio" name="wash" value="5">毎日してるよ！<br>
               </p>
             </div>
           </div>
@@ -114,10 +110,10 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="checkbox" name="riyu" value="1" checked="checked">高級洗車<br>
-                <input type="checkbox" name="riyu" value="2" checked="checked">鉄粉とり<br>
-                <input type="checkbox" name="riyu" value="1" checked="checked">窓ガラス油膜とり<br>
-                <input type="checkbox" name="riyu" value="2" checked="checked">Keeperコーティング<br>
+                <input type="checkbox" name="wash_result" value="1" checked="checked">高級洗車<br>
+                <input type="checkbox" name="iron_result" value="1" >鉄粉とり<br>
+                <input type="checkbox" name="water_result" value="1" >窓ガラス油膜とり<br>
+                <input type="checkbox" name="coating_result" value="1" checked="checked">Keeperコーティング<br>
               </p><br>
             </div>
             <h3>料金は{{price}}円です。</h3>
@@ -130,5 +126,13 @@
     </form>
   </div>
 </section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+  
+</script>
 
 {% endblock %}
