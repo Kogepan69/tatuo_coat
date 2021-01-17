@@ -1094,3 +1094,68 @@ a:hover, a:focus, a:active {
 .form-label-group input {
   border-radius: 2rem;
 }
+
+body {
+  background: #F1F1F1;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* store */
+
+.storelist img {
+  height: 150px;
+  object-fit: contain;
+}
+
+.stafflist img {
+  height: 250px;
+  object-fit: contain;
+}
+
+.calendar img {
+  height: 150px;
+  object-fit: contain;
+}
+
+.card-booking {
+  max-width: 800px;
+}
+
+.booking_table {
+  width: 100%;
+  border: 1px solid #D1DBEB;
+  border-radius: 8px;
+  border-collapse: separate;
+  overflow: hidden;
+}
+
+.booking_table .header {
+  width: 200px;
+  padding: 16px 24px;
+  text-align: left;
+  background: #F1F5FA;
+}
+
+.booking_table .data {
+  padding: 16px 24px;
+}
+
+.form_wrap {
+  display: grid;
+  gap: 16px;
+}
+
+.form_wrap__2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mypage img {
+  height: 150px;
+  object-fit: contain;
+}

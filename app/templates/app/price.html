@@ -18,7 +18,7 @@
       <p class="section-subheading text-muted">*車の型式などの問題で正しい料金をご提示できない場合があります。</p>
       <p class="section-subheading text-muted">料金確定は実際に現車を確認してからになりますので参考程度にお考えください。</p><br><br>
     </div>
-    <form method="POST">
+    <form method="POST" name='form1'>
       {% csrf_token %}
       <ul class="timeline">
         <li>
@@ -132,7 +132,24 @@
 {% block extra_js %}
 
 <script>
+  function myCheck(){
+    var flag = false; // 選択されているか否かを判定するフラグ
+
+   //　ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
+    for(var i=0; i<document.form1.iron.length-1;i++){
+
+        // i番目のラジオボタンがチェックされているかを判定
+        if(document.form1.iron[i].checked){ 
+            flag = true;    
+            alert(document.form1.iron[i].value + "が選択されました。");
+        }
+    }
   
+    // 何も選択されていない場合の処理
+    if(!flag){ 
+        alert("項目が選択されていません。");
+    }
+}
 </script>
 
 {% endblock %}
