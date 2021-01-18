@@ -7,7 +7,6 @@ urlpatterns = [
     path('price/', views.PriceView.as_view(), name='price'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('blog/', views.BlogView.as_view(), name='blog'),
-    path('reservation/', views.ReservationView.as_view(), name='reservation'),
     path('wash/', views.WashView.as_view(), name='wash'),
     path('coating/', views.CoatingView.as_view(), name='coating'),
     path('polishing/', views.PolishingView.as_view(), name='polishing'),

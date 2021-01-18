@@ -27,22 +27,19 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'service' %}">施工までの流れ </a>
+                <a class="nav-link" href="{% url 'service' %}">施工の流れ </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'price' %}">料金システム</a>
+                <a class="nav-link" href="{% url 'price' %}">料金</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'reservation' %}">予約状況</a>
+                <a class="nav-link" href="{% url 'store' %}">予約</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'blog' %}">ブログ</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="{% url 'contact' %}">お問い合わせ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'store' %}">ストア</a>
               </li>
               {% if user.is_authenticated %}
                 <li class="nav-item">

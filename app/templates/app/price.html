@@ -45,18 +45,11 @@
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4>お車を触った時にザラザラとしますか？</h4>
-              <h4 class="subheading">またお車の保管場所を教えてください。</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="radio" name="iron" value="1" checked="checked">ザラザラする箇所がある<br>
+                <input type="radio" name="iron" value="1"  onclick="clickBtn()">ザラザラする箇所がある<br>
                 <input type="radio" name="iron" value="2">とてもツルツル
-              </p>
-              <br>
-              <p class="text-muted">
-                <input type="radio" name="iron_place" value="1" checked="checked">屋内　
-                <input type="radio" name="iron_place" value="2">屋外<br>
-                <input type="radio" name="iron_place" value="3">屋内だが通勤にも使う
               </p>
             </div>
           </div>
@@ -65,13 +58,12 @@
           <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="" /></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4>窓ガラスの撥水性能に満足していますか？</h4>
               <h4 class="subheading">夜運転していて見づらいなと感じたことはありませんか？</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="radio" name="water" value="1" checked="checked">満足している<br>
-                <input type="radio" name="water" value="2">水弾かない
+                <input type="radio" name="water" value="1" onclick="clickBtn2()">ある<br>
+                <input type="radio" name="water" value="2">ない
               </p>
             </div>
           </div>
@@ -111,7 +103,7 @@
             <div class="timeline-body">
               <p class="text-muted">
                 <input type="checkbox" name="wash_result" value="1" checked="checked">高級洗車<br>
-                <input type="checkbox" name="iron_result" value="1" >鉄粉とり<br>
+                <input type="checkbox" name="iron_result" value="iron_cut" >鉄粉とり<br>
                 <input type="checkbox" name="water_result" value="1" >窓ガラス油膜とり<br>
                 <input type="checkbox" name="coating_result" value="1" checked="checked">Keeperコーティング<br>
               </p><br>
@@ -132,24 +124,17 @@
 {% block extra_js %}
 
 <script>
-  function myCheck(){
-    var flag = false; // 選択されているか否かを判定するフラグ
+  function clickBtn(){
+      const iron_result = document.form1.iron_result;
 
-   //　ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
-    for(var i=0; i<document.form1.iron.length-1;i++){
+      iron_result.checked = true;
+  }
 
-        // i番目のラジオボタンがチェックされているかを判定
-        if(document.form1.iron[i].checked){ 
-            flag = true;    
-            alert(document.form1.iron[i].value + "が選択されました。");
-        }
-    }
-  
-    // 何も選択されていない場合の処理
-    if(!flag){ 
-        alert("項目が選択されていません。");
-    }
-}
+  function clickBtn2(){
+      const water_result = document.form1.water_result;
+
+      water_result.checked = true;
+  }
 </script>
 
 {% endblock %}

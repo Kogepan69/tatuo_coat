@@ -15,7 +15,7 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/index.html')
 
-class IndexView(LoginRequiredMixin, TemplateView):
+class IndexView(TemplateView):
     template_name = "app/index.html"
     login_url = '/accounts/login/'
 
@@ -60,7 +60,7 @@ class PriceView(View):
             print(car_data.size)
             if request.POST.get('iron') == '1':
               price+=1500
-            if request.POST.get('water') == '2':
+            if request.POST.get('water') == '1':
               price+=1500
         
 
@@ -81,10 +81,6 @@ class BlogView(View):
         return render(request, 'app/blog.html', {
             'blog_data': blog_data
         })
-
-class ReservationView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'app/reservation.html')
 
 class WashView(View):
     def get(self, request, *args, **kwargs):
