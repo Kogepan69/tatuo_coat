@@ -1,8 +1,8 @@
 from app.models import Store, Staff, Booking
 from django.views.generic import View, TemplateView
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Blog,Car
-from .forms import CarForm
+from .models import Post, Car
+from .forms import CarForm, PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.timezone import localtime, make_aware
 from datetime import datetime, date, timedelta, time
@@ -14,6 +14,97 @@ from django.views.decorators.http import require_POST
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/index.html')
+
+class BlogView(View):
+    def get(self, request, *args, **kwargs):
+        post_data = Post.objects.order_by("-id")
+        return render(request, 'app/blog.html', {
+            'post_data': post_data,
+        })
+
+class PostDetailView(View):
+    def get(self, request, *args, **kwargs):
+        post_data = Post.objects.get(id=self.kwargs['pk'])
+        return render(request, 'app/post_detail.html', {
+            'post_data': post_data
+        })
+
+class PostDeleteView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        post_data = Post.objects.get(id=self.kwargs['pk'])
+        return render(request, 'app/post_delete.html', {
+            'post_data': post_data
+        })
+
+    def post(self, request, *args, **kwargs):
+        post_data = Post.objects.get(id=self.kwargs['pk'])
+        post_data.delete()
+        return redirect('index')
+
+class CreatePostView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        form = PostForm(request.POST or None)
+
+        return render(request, 'app/post_form.html', {
+            'form': form
+        })
+
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST or None)
+
+        if form.is_valid():
+            post_data = Post()
+            post_data.author = request.user
+            post_data.title = form.cleaned_data['title']
+            category = form.cleaned_data['category']
+            category_data = Category.objects.get(name=category)
+            post_data.category = category_data
+            post_data.content = form.cleaned_data['content']
+            if request.FILES:
+                post_data.image = request.FILES.get('image')
+            post_data.save()
+            return redirect('post_detail', post_data.id)
+
+        return render(request, 'app/post_form.html', {
+            'form': form
+        })
+
+
+class PostEditView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        post_data = Post.objects.get(id=self.kwargs['pk'])
+        form = PostForm(
+            request.POST or None,
+            initial={
+                'title': post_data.title,
+                'category': post_data.category,
+                'content': post_data.content,
+                'image': post_data.image,
+            }
+        )
+
+        return render(request, 'app/post_form.html', {
+            'form': form
+        })
+    
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST or None)
+
+        if form.is_valid():
+            post_data = Post.objects.get(id=self.kwargs['pk'])
+            post_data.title = form.cleaned_data['title']
+            category = form.cleaned_data['category']
+            category_data = Category.objects.get(name=category)
+            post_data.category = category_data
+            post_data.content = form.cleaned_data['content']
+            if request.FILES:
+                post_data.image = request.FILES.get('image')
+            post_data.save()
+            return redirect('post_detail', self.kwargs['pk'])
+
+        return render(request, 'app/post_form.html', {
+            'form': form
+        })
 
 class IndexView(TemplateView):
     template_name = "app/index.html"
@@ -69,18 +160,9 @@ class PriceView(View):
             "price":price
         })
 
-
-
 class ContactView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/contact.html')
-
-class BlogView(View):
-    def get(self, request, *args, **kwargs):
-        blog_data = Blog.objects.order_by("-id")
-        return render(request, 'app/blog.html', {
-            'blog_data': blog_data
-        })
 
 class WashView(View):
     def get(self, request, *args, **kwargs):
@@ -105,13 +187,6 @@ class ProgramView(View):
 class CampanyView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/campany.html')
-
-class DetailView(View):
-    def get(self, request, *args, **kwargs):
-        blog_data = Blog.objects.get(id=self.kwargs['pk'])
-        return render(request, 'app/detail.html', {
-            'blog_data': blog_data
-        })
 
 class StoreView(View):
     def get(self, request, *args, **kwargs):
@@ -138,8 +213,6 @@ class StaffView(View):
             'store_data': store_data,
             'staff_data': staff_data,
         })
-
-        
 
 class CalendarView(View):
     def get(self, request, *args, **kwargs):

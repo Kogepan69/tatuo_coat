@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Blog, Car, Store, Staff, Booking
+from .models import Post , Car , Store, Staff, Booking
 
-admin.site.register(Blog)
+admin.site.register(Post)
 admin.site.register(Car)
 admin.site.register(Store)
 admin.site.register(Staff)
