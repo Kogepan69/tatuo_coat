@@ -1,7 +1,7 @@
 from app.models import Store, Staff, Booking
 from django.views.generic import View, TemplateView
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Post, Car
+from .models import Post, Car, Category
 from .forms import CarForm, PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.timezone import localtime, make_aware
@@ -104,6 +104,15 @@ class PostEditView(LoginRequiredMixin, View):
 
         return render(request, 'app/post_form.html', {
             'form': form
+        })
+
+
+class CategoryView(View):
+    def get(self, request, *args, **kwargs):
+        category_data = Category.objects.get(name=self.kwargs['category'])
+        post_data = Post.objects.order_by('-id').filter(category=category_data)
+        return render(request, 'app/index.html', {
+            'post_data': post_data
         })
 
 class IndexView(TemplateView):
@@ -300,7 +309,7 @@ class BookingView(View):
                 booking.tel = form.cleaned_data['tel']
                 booking.remarks = form.cleaned_data['remarks']
                 booking.save()
-                return redirect('store') # あとで変更
+                return redirect('thanks')
 
         return render(request, 'app/booking.html', {
             'staff_data': staff_data,
@@ -318,7 +327,7 @@ class ThanksView(View):
 
 class MyPageView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        staff_data = Staff.objects.filter(id=request.user.id).select_related('user').select_related('store')[0]
+        staff_data = Staff.objects.filter(user=request.user).select_related('user').select_related('store')[0]
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
         day = self.kwargs.get('day')
@@ -360,7 +369,7 @@ class MyPageView(LoginRequiredMixin, View):
 
 @require_POST
 def Holiday(request, year, month, day, hour):
-    staff_data = Staff.objects.get(id=request.user.id)
+    staff_data = Staff.objects.get(user=request.user)
     start_time = make_aware(datetime(year=year, month=month, day=day, hour=hour))
     end_time = make_aware(datetime(year=year, month=month, day=day, hour=hour + 1))
 

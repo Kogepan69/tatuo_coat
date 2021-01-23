@@ -48,8 +48,8 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="radio" name="iron" value="1"  onclick="clickBtn()">ザラザラする箇所がある<br>
-                <input type="radio" name="iron" value="2">とてもツルツル
+                <input type="radio" name="iron" value="1"  onclick="clickBtn()" checked="checked">ザラザラする箇所がある<br>
+                <input type="radio" name="iron" value="2" onclick="clickBtn4()">とてもツルツル
               </p>
             </div>
           </div>
@@ -62,8 +62,8 @@
             </div>
             <div class="timeline-body">
               <p class="text-muted">
-                <input type="radio" name="water" value="1" onclick="clickBtn2()">ある<br>
-                <input type="radio" name="water" value="2">ない
+                <input type="radio" name="water" value="1" onclick="clickBtn2()" checked="checked">ある<br>
+                <input type="radio" name="water" value="2" onclick="clickBtn3()">ない
               </p>
             </div>
           </div>
@@ -124,16 +124,36 @@
 {% block extra_js %}
 
 <script>
+  const iron_result = document.form1.iron_result;
+
+  iron_result.checked = true;
+  
+  const water_result = document.form1.water_result;
+
+  water_result.checked = true;
+
   function clickBtn(){
       const iron_result = document.form1.iron_result;
 
       iron_result.checked = true;
+  }
+  
+  function clickBtn4(){
+      const iron_result = document.form1.iron_result;
+
+      iron_result.checked = false;
   }
 
   function clickBtn2(){
       const water_result = document.form1.water_result;
 
       water_result.checked = true;
+  }
+
+  function clickBtn3(){
+      const water_result = document.form1.water_result;
+
+      water_result.checked = false;
   }
 </script>
 
