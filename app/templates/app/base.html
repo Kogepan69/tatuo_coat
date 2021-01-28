@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
     <link rel="stylesheet" href="{% static 'scss/contact.scss' %}">
-    <title>たつおの出張コーティング</title>
+    <title>ELAIZA CRAFT</title>
 </head>
 
 <body>
     <header>
       <div>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav class="base_top_header navbar navbar-expand-md fixed-top">
           <a href="/">
             <img class="navbar-brand logos" src="{% static 'img/logo.jpg' %}">
           </a>
@@ -27,16 +27,16 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'service' %}">施工の流れ </a>
+                  <a class="nav-link" href="{% url 'service' %}">施工の流れ </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'price' %}">料金</a>
+                  <a class="nav-link" href="{% url 'price' %}">料金</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'store' %}">予約</a>
+                  <a class="nav-link" href="{% url 'store' %}">予約</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog' %}">ブログ</a>
+                  <a class="nav-link" href="{% url 'blog' %}">ブログ</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="{% url 'contact' %}">お問い合わせ</a>

@@ -307,6 +307,7 @@ class BookingView(View):
                 booking.first_name = form.cleaned_data['first_name']
                 booking.last_name = form.cleaned_data['last_name']
                 booking.tel = form.cleaned_data['tel']
+                booking.address = form.cleaned_data['address']
                 booking.remarks = form.cleaned_data['remarks']
                 booking.save()
                 return redirect('thanks')

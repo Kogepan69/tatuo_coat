@@ -16,11 +16,11 @@
               <img class="card-img-top index-img" src="{{ post.image.url }}" alt="">
           {% endif %}
           <div class="card-body">
-              <h2 class="card-title">{{ post.title }}<span class="small"> - {{ post.category }}</span></h2>
-              <p class="card-text">{{ post.content|truncatechars:100 }}</p>
-              <div class="btn btn-warning">詳細</div>
+              <h2 class="card-title text-center">{{ post.title }}<span class="small text-success"> - {{ post.category }}</span></h2>
+              <p class="card-text text-center">{{ post.content|truncatechars:100 }}</p>
+              <div class="btn btn-info btn-lg btn-block">詳細</div>
           </div>
-          <div class="card-footer text-muted">
+          <div class="card-footer text-success">
               {{ post.created|date }} by {{ post.author }}
           </div>
           <a class="stretched-link" href="{% url 'post_detail' post.id %}"></a>
@@ -30,12 +30,11 @@
 
   <div class="col-md-4">
       <div class="card">
-          <h5 class="card-header">このチュートリアルについて</h5>
+          <h5 class="card-header">ELAIZA BLOGS</h5>
           <div class="card-body">
-              <p>ステップ1</p>
               <p class="mb-0">
-                  初めてDjangoを触る方向けのチュートリアルです。
-                  最小限の機能を構築してDjangoを学習しましょう。
+                  このブログではELAIZA CRAFTの活動をまとめて日記形式でお届けいたします。
+                  このほかにも各種SNSでも活動を更新していきます。
               </p>
           </div>
       </div>
@@ -57,6 +56,16 @@
                   {% endfor %}
               </div>
           </div>
+      </div>
+
+      <div class="card">
+        <h5 class="card-header">SNS</h5>
+        <div class="card-body">
+          <a class="btn btn-info btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+          <a class="btn btn-info btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+          <a class="btn btn-info btn-social mx-1" href="#!"><i class="fab fa-fw fab fa-instagram"></i></a>
+          <a class="btn btn-info btn-social mx-1" href="#!"><i class="fab fa-fw fab fa-youtube"></i></a>
+        </div>
       </div>
   </div>
 </div>

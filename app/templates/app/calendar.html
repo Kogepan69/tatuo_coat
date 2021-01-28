@@ -16,10 +16,10 @@
 
     <div class="d-flex mb-2">
         <div class="mx-3 mr-auto">
-            <a class="btn btn-warning" href="{% url 'calendar' staff_data.pk before.year before.month before.day %}">前週</a>
+            <a class="btn btn-outline-primary" href="{% url 'calendar' staff_data.pk before.year before.month before.day %}">前週</a>
         </div>
         <div class="mx-3">
-            <a class="btn btn-warning" href="{% url 'calendar' staff_data.pk next.year next.month next.day %}">次週</a>
+            <a class="btn btn-outline-primary" href="{% url 'calendar' staff_data.pk next.year next.month next.day %}">次週</a>
         </div>
     </div>
     <div class="">
@@ -29,7 +29,7 @@
                     <th></th>
                     {% for day in days %}
                         {% if day.weekday == 5 %}
-                            <th scope="col" class="text-primary">{{ day | date:"d(D)" }}</th>
+                            <th scope="col" class="text-info">{{ day | date:"d(D)" }}</th>
                         {% elif day.weekday == 6 %}
                             <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
                         {% else %}

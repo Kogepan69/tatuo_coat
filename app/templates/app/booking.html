@@ -2,6 +2,8 @@
 {% load widget_tweaks %}
 
 {% block content %}
+<br>
+<br>
 <div class="card card-booking my-5 mx-auto">
     <div class="card-body">
         <h5 class="card-title text-center">予約内容</h5>
@@ -45,6 +47,12 @@
                         </td>
                     </tr>
                     <tr>
+                      <th class="header">住所</th>
+                      <td class="data">
+                          {% render_field form.address class="form-control"%}
+                      </td>
+                  </tr>
+                    <tr>
                         <th class="header">その他備考</th>
                         <td class="data">
                             {% render_field form.remarks class="form-control" %}
@@ -53,7 +61,7 @@
                 </tbody>
             </table>
             <div class="button mx-auto">
-                <button class="btn btn-lg btn-warning btn-block" type="submit">予約確定</button>
+                <button class="btn btn-lg btn btn-outline-success btn-block" type="submit">予約確定</button>
             </div>
         </form>
     </div>

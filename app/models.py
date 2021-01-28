@@ -50,6 +50,7 @@ class Booking(models.Model):
     first_name = models.CharField('姓', max_length=100, null=True, blank=True)
     last_name = models.CharField('名', max_length=100, null=True, blank=True)
     tel = models.CharField('電話番号', max_length=100, null=True, blank=True)
+    address = models.CharField('住所', max_length=100, null=True, blank=True)
     remarks = models.TextField('備考', default="", blank=True)
     start = models.DateTimeField('開始時間', default=timezone.now)
     end = models.DateTimeField('終了時間', default=timezone.now)

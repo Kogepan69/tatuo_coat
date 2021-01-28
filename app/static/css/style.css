@@ -136,12 +136,9 @@ img::-moz-selection {
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #fff;
   letter-spacing: 0.0625em;
 }
-#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #fed136;
-}
+
 
 @media (min-width: 992px) {
   #mainNav {
@@ -1081,6 +1078,7 @@ a:hover, a:focus, a:active {
 
 .card-body {
   padding: 2rem;
+  margin-top: 10px;
 }
 
 .form-auth {
@@ -1125,11 +1123,12 @@ main {
 
 .card-booking {
   max-width: 800px;
+  border: 1px solid #7fb0ff;
 }
 
 .booking_table {
   width: 100%;
-  border: 1px solid #D1DBEB;
+  border: 1px solid #7fb0ff;
   border-radius: 8px;
   border-collapse: separate;
   overflow: hidden;
@@ -1139,7 +1138,7 @@ main {
   width: 200px;
   padding: 16px 24px;
   text-align: left;
-  background: #F1F5FA;
+  background: #d5e6fc;
 }
 
 .booking_table .data {
@@ -1201,3 +1200,8 @@ a:hover {
   text-decoration: none;
   color: orange;
 }
+
+.base_top_header {
+  background-color: rgb(236, 236, 236);
+}
+
