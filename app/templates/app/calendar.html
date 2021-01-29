@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block top-image %}
-<img src="{% static 'img/yoyaku_top.jpg' %}">
+<img src="{% static 'img/open.jpg' %}">
 {% endblock %}
 
 {% block content %}
@@ -27,22 +27,14 @@
             <thead class="thead-light">
                 <tr>
                     <th></th>
-                    {% for day in days %}
-                        {% if day.weekday == 5 %}
                             <th scope="col" class="text-info">{{ day | date:"d(D)" }}</th>
-                        {% elif day.weekday == 6 %}
                             <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
-                        {% else %}
                             <th scope="col">{{ day | date:"d(D)" }}</th>
-                        {% endif %}
-                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                {% for hour, schedules in calendar.items %}
                     <tr>
                         <td scope="row">{{ hour }}:00</td>
-                        {% for datetime, book in schedules.items %}
                             <td>
                                 {% if datetime <= today %}
                                     -
@@ -54,9 +46,7 @@
                                     <i class="fas fa-times text-danger"></i>
                                 {% endif %}
                             </td>
-                        {% endfor %}
                     </tr>
-                {% endfor %}
             </tbody>
         </table>
     </div>
