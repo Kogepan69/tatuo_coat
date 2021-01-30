@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'app',
-    'sass_processor',
     'accounts',
     'django.contrib.sites',
     'allauth',
