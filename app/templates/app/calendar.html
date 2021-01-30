@@ -16,37 +16,47 @@
 
     <div class="d-flex mb-2">
         <div class="mx-3 mr-auto">
-            <a class="btn btn-outline-primary" href="{% url 'calendar' staff_data.pk before.year before.month before.day %}">前週</a>
+            <a class="btn btn-outline-primary" href="{% url 'calendar' before.year before.month before.day %}">前週</a>
         </div>
         <div class="mx-3">
-            <a class="btn btn-outline-primary" href="{% url 'calendar' staff_data.pk next.year next.month next.day %}">次週</a>
+            <a class="btn btn-outline-primary" href="{% url 'calendar' next.year next.month next.day %}">次週</a>
         </div>
     </div>
     <div class="">
         <table class="table table-bordered bg-light">
             <thead class="thead-light">
-                <tr>
-                    <th></th>
-                            <th scope="col" class="text-info">{{ day | date:"d(D)" }}</th>
-                            <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
-                            <th scope="col">{{ day | date:"d(D)" }}</th>
-                </tr>
+              <tr>
+                <th></th>
+                {% for day in days %}
+                    {% if day.weekday == 5 %}
+                        <th scope="col" class="text-primary">{{ day | date:"d(D)" }}</th>
+                    {% elif day.weekday == 6 %}
+                        <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
+                    {% else %}
+                        <th scope="col">{{ day | date:"d(D)" }}</th>
+                    {% endif %}
+                {% endfor %}
+            </tr>
             </thead>
             <tbody>
+                {% for hour, schedules in calendar.items %}
                     <tr>
                         <td scope="row">{{ hour }}:00</td>
+                        {% for datetime, book in schedules.items %}
                             <td>
                                 {% if datetime <= today %}
                                     -
                                 {% elif book %}
-                                    <a href="{% url 'booking' staff_data.pk datetime.year datetime.month datetime.day hour %}">
+                                    <a href="{% url 'booking' datetime.year datetime.month datetime.day hour %}">
                                         <i class="far fa-circle text-info"></i>
                                     </a>
                                 {% else %}
-                                    <i class="fas fa-times text-danger"></i>
+                                  <i class="fas fa-times text-danger"></i>
                                 {% endif %}
                             </td>
+                        {% endfor %}
                     </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
