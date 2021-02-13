@@ -161,6 +161,7 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if not DEBUG:
+    DEBUG = True
     import environ
     env = environ.Env()
     env.read_env(os.path.join(BASE_DIR,'.env'))
