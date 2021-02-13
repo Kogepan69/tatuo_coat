@@ -9,6 +9,10 @@ from datetime import datetime, date, timedelta, time
 from django.db.models import Q
 from app.forms import BookingForm
 from django.views.decorators.http import require_POST
+import textwrap
+from django.core.mail import BadHeaderError, EmailMessage
+from django.http import HttpResponse
+from django.conf import settings
 
 
 class IndexView(View):
@@ -307,8 +311,48 @@ class BookingView(View):
                 booking.first_name = form.cleaned_data['first_name']
                 booking.last_name = form.cleaned_data['last_name']
                 booking.tel = form.cleaned_data['tel']
+                booking.email = form.cleaned_data['email']
                 booking.remarks = form.cleaned_data['remarks']
                 booking.save()
+
+                name = form.cleaned_data['first_name'] + ' ' + form.cleaned_data['last_name']
+                email = form.cleaned_data['email']
+                message = form.cleaned_data['remarks']
+                subject = 'お問い合わせありがとうございます。'
+                content = textwrap.dedent('''
+                    ※このメールはシステムからの自動返信です。
+                    
+                    {name} 様
+                    
+                    お問い合わせありがとうございました。
+                    以下の内容でお問い合わせを受け付けいたしました。
+                    内容を確認させていただき、ご返信させて頂きますので、少々お待ちください。
+                    
+                    --------------------
+                    ■お名前
+                    {name}
+                    
+                    ■メールアドレス
+                    {email}
+                    
+                    ■メッセージ
+                    {message}
+                    --------------------
+                    ''').format(
+                        name=name,
+                        email=email,
+                        message=message
+                    )
+
+                to_list = [email]
+                bcc_list = [settings.EMAIL_HOST_USER]
+
+                try:
+                    message = EmailMessage(subject=subject, body=content, to=to_list, bcc=bcc_list)
+                    message.send()
+                except BadHeaderError:
+                    return HttpResponse("無効なヘッダが検出されました。")
+
                 return redirect('thanks')
 
         return render(request, 'app/booking.html', {
@@ -319,6 +363,8 @@ class BookingView(View):
             'hour': hour,
             'form': form,
         })
+
+
 
 class ThanksView(View):
     def get(self, request, *args, **kwargs):
