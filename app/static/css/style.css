@@ -4,6 +4,12 @@
   object-fit: cover;
 }
 
+@media screen and (max-width: 500px) {
+  .top-image img{
+    height: 400px;
+  }
+}
+
 .top li{
   float: left;
   text-align: center;
