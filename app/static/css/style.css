@@ -3,19 +3,15 @@
   object-fit: cover;
 }
 
-@media screen and (min-width: 851px) {
+@media (min-width: 851px) {
   .top-image img{
     height: 800px;
   }
 }
 
-@media screen and (max-width: 850px) {
+@media (max-width: 850px) {
   .top-image img{
     height: 400px;
-  }
-
-  .text-center {
-
   }
 }
 
