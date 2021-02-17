@@ -3,13 +3,13 @@
   object-fit: cover;
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1801px) {
   .top-image img{
     height: 800px;
   }
 }
 
-@media (min-width: 851px) {
+@media (max-width: 1800px) {
   .top-image img{
     height: 500px;
   }
