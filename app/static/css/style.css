@@ -3,9 +3,15 @@
   object-fit: cover;
 }
 
-@media (min-width: 851px) {
+@media (min-width: 1500px) {
   .top-image img{
     height: 800px;
+  }
+}
+
+@media (min-width: 851px) {
+  .top-image img{
+    height: 500px;
   }
 }
 
