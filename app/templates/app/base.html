@@ -16,34 +16,29 @@
 <body>
     <header>
       <div>
-        <nav class="base_top_header navbar navbar-expand-md fixed-top">
-          <a href="/">
-            <img class="navbar-brand logos" src="{% static 'img/logo.jpg' %}">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'service' %}">施工の流れ </a>
-              </li>
-              <li class="nav-item">
+        <div class="navnav">
+              <div class="nav-item">
+                <a href="/">
+                <img class="navbar-brand logos" src="{% static 'img/logo.jpg' %}">
+                </a>
+              </div>
+              <div class="nav-item">
+                  <a class="nav-link" href="{% url 'service' %}">施工 </a>
+              </div>
+              <div class="nav-item">
                   <a class="nav-link" href="{% url 'price' %}">料金</a>
-              </li>
-              <li class="nav-item">
+              </div>
+              <div class="nav-item">
                   <a class="nav-link" href="{% url 'calendar' %}">予約</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog' %}">ブログ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="{% url 'contact' %}">お問い合わせ</a>
-              </li>
-              
-            </ul>
-          </div>
-        </nav>
+              </div>
+              <div class="nav-item">
+                  <a class="nav-link" href="{% url 'blog' %}">日記</a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link " href="{% url 'contact' %}">配信</a>
+              </div>
+        </div>
+      </div>
         <div class="top-image">
           {% block top-image %}
           {% endblock %}

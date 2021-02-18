@@ -3,6 +3,13 @@
   object-fit: cover;
 }
 
+.navnav {
+  display: flex;
+  padding-top: 5px;
+  background-color: rgb(235, 234, 234);
+}
+
+
 @media (min-width: 1801px) {
   .top-image img{
     height: 800px;
@@ -15,10 +22,43 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .top-image img{
     height: 400px;
   }
+
+  .nav-item {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .top-image img{
+    height: 300px;
+  }
+
+  .nav-item {
+    font-size: 5px;
+  }
+
+  .container h1{
+    font-size: 20px;
+  }
+
+  .container p {
+    font-size: 15px;
+  }
+
+  .portfolio-item {
+    width: 230px;
+    height: 300px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
 }
 
 .top li{
