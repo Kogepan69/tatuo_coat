@@ -22,22 +22,20 @@
             <a class="btn btn-outline-primary" href="{% url 'calendar' next.year next.month next.day %}">次週</a>
         </div>
     </div>
-    <div class="calendar-dayo">
-        <div class="calendar-item">
-            <table class="table table-bordered bg-light">
+            <table class="table table-bordered bg-light table-responsive-sm">
                 <thead class="thead-light">
-                    <tr>
-                    <th></th>
-                    {% for day in days %}
-                        {% if day.weekday == 5 %}
-                            <th scope="col" class="text-primary">{{ day | date:"d(D)" }}</th>
-                        {% elif day.weekday == 6 %}
-                            <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
-                        {% else %}
-                            <th scope="col">{{ day | date:"d(D)" }}</th>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
+                        <tr>
+                        <th></th>
+                        {% for day in days %}
+                            {% if day.weekday == 5 %}
+                                <th scope="col" class="text-primary">{{ day | date:"d(D)" }}</th>
+                            {% elif day.weekday == 6 %}
+                                <th scope="col" class="text-danger">{{ day | date:"d(D)" }}</th>
+                            {% else %}
+                                <th scope="col">{{ day | date:"d(D)" }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
                 </thead>
                 <tbody>
                     {% for hour, schedules in calendar.items %}
@@ -60,8 +58,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </div>
 </div>
 
 {% endblock %}
