@@ -142,30 +142,30 @@ class PriceView(View):
             car_name= form.cleaned_data['name']
             car_data=Car.objects.get(name=car_name)
             if car_data.size =="SS":
-              price=14500
+                price=14500
 
             elif car_data.size =="S":
-              price=16000
+                price=16000
             
             elif car_data.size =="M":
-              price=17500
+                price=17500
 
             elif car_data.size =="L":
-              price=19000
+                price=19000
 
             elif car_data.size =="LL":
-              price=21500
+                price=21500
 
             elif car_data.size =="XL":
-              price=23000
+                price=23000
 
             else:
-              price=5000
+                price=5000
             print(car_data.size)
             if request.POST.get('iron') == '1':
-              price+=1500
+                price+=1500
             if request.POST.get('water') == '1':
-              price+=1500
+                price+=1500
         
 
         return render(request, 'app/price.html', {

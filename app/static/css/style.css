@@ -60,9 +60,80 @@
     font-size: 15px;
   }
 
+  .timeline h4{
+    font-size: 15px;
+  }
+
+  #time_pp {
+    font-size: 10px;
+  }
+
+  #time_ppp {
+    font-size: 10px;
+  }
+
+  #price-tab {
+    font-size: 25px;
+  }
+
+  #about {
+    padding-top: 30px;
+  }
+
+  #pp {
+    font-size: 10px;
+  }
+
+  #ppp {
+    font-size: 10px;
+  }
+
+  #pppp {
+    font-size: 10px;
+  }
+
+  #ppppp {
+    font-size: 10px;
+  }
+
+
+
+  #ai_space {
+    margin-bottom: 20px;
+  }
+
+  #services {
+    padding-top: 30px;
+  }
+
+  #services_h2 {
+    font-size: 30px;
+  }
+
+  #services_h3 {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  #otemoti h2 {
+    font-size: 20px;
+  }
+
+  #page-section12 {
+    margin-top: 20px;
+  }
+
+  #gare-ji h2{
+    font-size: 18px;
+  }
+
+  #kessai h2{
+    font-size: 20px;
+  }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
   .top-image img{
     height: 300px;
   }
@@ -88,6 +159,83 @@
     font-size: 15px;
   }
 
+  .timeline h4{
+    font-size: 15px;
+  }
+
+  #time_pp {
+    font-size: 10px;
+  }
+
+  #time_ppp {
+    font-size: 10px;
+  }
+
+  #price-tab {
+    font-size: 25px;
+  }
+
+  #about {
+    padding-top: 30px;
+  }
+
+  #pp {
+    font-size: 10px;
+  }
+
+  #ppp {
+    font-size: 10px;
+  }
+
+  #pppp {
+    font-size: 10px;
+  }
+
+  #ppppp {
+    font-size: 10px;
+  }
+
+  #ai_space {
+    margin-bottom: 20px;
+  }
+
+  #services {
+    padding-top: 30px;
+  }
+
+  #services_h2 {
+    font-size: 30px;
+  }
+
+  #services_h3 {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  #otemoti h2 {
+    font-size: 18px;
+  }
+
+  #page-section12 {
+    margin-top: 20px;
+  }
+
+  #gare-ji h2{
+    font-size: 16px;
+  }
+
+  #kessai h2{
+    font-size: 20px;
+  }
+
+  #yoyaku-bar {
+    height: 600px;
+  }
+
+  .card-body h5 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .content-section h2{
