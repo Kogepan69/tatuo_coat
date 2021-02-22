@@ -204,7 +204,7 @@
   }
 
   #services_h2 {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   #services_h3 {
@@ -236,6 +236,23 @@
     font-size: 20px;
     margin-bottom: 20px;
   }
+
+  #index-midle {
+    font-size: 15px;
+  }
+
+  #index-midle h4 {
+    font-size: 15px;
+  }
+
+  .portfolio-item {
+    margin-bottom: 0px;
+  }
+
+  #kodawari {
+    font-size: 25px;
+  }
+
 }
 
 .content-section h2{
@@ -259,7 +276,7 @@
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 3rem 0;
 }
 .page-section h2.section-heading {
   font-size: 2.5rem;
