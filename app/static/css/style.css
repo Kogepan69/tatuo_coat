@@ -131,6 +131,22 @@
     font-size: 20px;
   }
 
+  #index-midle {
+    font-size: 15px;
+  }
+
+  #index-midle h4 {
+    font-size: 15px;
+  }
+
+  .portfolio-item {
+    margin-bottom: 0px;
+  }
+
+  #kodawari {
+    font-size: 25px;
+  }
+
 }
 
 @media (max-width: 380px) {
